@@ -68,8 +68,11 @@ cc_library_shared {
         "liblog",
         "libbinder_ndk",
         "android.hardware.vibrator-V1-ndk",
-    ],
-    export_include_dirs: ["include"]
+    ] + select(soong_config_variable("OPLUS_LINEAGE_VIBRATOR_HAL", "USE_EFFECT_STREAM"), {
+        "true": ["liboplusvibratoreffect"],
+        default: [],
+    }),
+    export_include_dirs: ["include"],
 }
 
 cc_binary {
