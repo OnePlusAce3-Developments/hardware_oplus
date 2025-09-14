@@ -10,6 +10,11 @@ cc_library_static {
     include_dirs: [
         "frameworks/native/services/surfaceflinger/CompositionEngine/include",
     ],
+    cflags:
+        select(soong_config_variable("ANDROID", "DeviceName"), {
+        "aston": ["-DBUILD_ASTON"],
+        default: []
+    })
     header_libs: [
         "generated_kernel_headers",
     ],

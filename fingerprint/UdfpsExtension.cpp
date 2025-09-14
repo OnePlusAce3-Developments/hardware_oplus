@@ -23,7 +23,11 @@
 #endif
 
 uint32_t getUdfpsDimZOrder(uint32_t z) {
+#ifdef BUILD_ASTON
+    return z;
+#else
     return 0x41000005;
+#endif
 }
 
 uint32_t getUdfpsZOrder(uint32_t z, bool touched) {
